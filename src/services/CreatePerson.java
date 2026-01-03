@@ -91,9 +91,9 @@ public class CreatePerson {
 
         int defesaVil = (resVilao + velVilao)/2;
         int golpeVil = (forcaVilao + velVilao)/2;
+        Scanner scannerLuta = new Scanner(System.in);
+        while (vidaVilao > 0 && vida > 0) {
 
-        while (vidaVilao > 0 || vida > 0) {
-            Scanner scannerLuta = new Scanner(System.in);
             System.out.println("1-Golpear 2-Esquivar");
             int acao = scannerLuta.nextInt();
             switch (acao) {
@@ -113,11 +113,22 @@ public class CreatePerson {
                         System.out.println("Sua vida :" + vida);
                         System.out.println("Vida vilao :" + vidaVilao);
                     }
+                    break;
+                case 2:
+                    System.out.println("Você esquivou");
+                    break;
+                default:
+                    System.out.println("Opção invalida");
             }
-
-
-
+            if(vidaVilao < 0) {
+                System.out.println("Você venceu a luta");
+            } else if (vida < 0) {
+                System.out.println("Você perdeu");
+            } else {
+                System.out.println("Continue lutando...");
+            }
         }
+        System.out.println("Fim de Luta");
     }
     public void primeiraLuta() throws InterruptedException {
         String nomeVilao = "Ghost";
@@ -127,14 +138,14 @@ public class CreatePerson {
         int vidaVilao = (forcaVilao + velVilao + resVilao)/3;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Não fique pensando no passado...");
-        Thread.sleep(2000);
+        pausa();
         System.out.println("O Fantasma está perto de você , o deseja fazer");
         System.out.println("1-Fugir 2-Lutar");
         int escolha = scanner.nextInt();
 
         if (escolha == 1) {
             fuga(velVilao,forcaVilao);
-        }else {
+        } else {
             System.out.println("A luta vai começar");
             luta(nomeVilao,forcaVilao,velVilao,resVilao,vidaVilao);
         }
