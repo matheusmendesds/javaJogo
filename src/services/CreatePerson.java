@@ -1,7 +1,7 @@
 package services;
 
 import classes.Person;
-
+import java.util.Timer;
 import java.util.Scanner;
 
 public class CreatePerson {
@@ -69,8 +69,32 @@ public class CreatePerson {
 
 
 
-
-
-
+    }
+    public void fuga(int velVilao , int forVilao) {
+        if (vel > velVilao ) {
+            System.out.println("Você fugiu temporariamente, escolha sua proxima ação");
+        } else if (vel == velVilao || forca > forVilao) {
+            System.out.println("Ele quase te pegou mas você conseguir fugir, escolha sua proxima ação");
+        } else {
+            System.out.println("Você tentou fugir mas não foi rapido o suficiente , tente novamente");
+        }
+    }
+    public void primeiraLuta() throws InterruptedException {
+        String nomeVilao = "Ghost";
+        int forcaVilao = 60;
+        int velVilao = 80;
+        int resVilao = 65;
+        int vidaVIlao = (forcaVilao + velVilao + resVilao)/3;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Não fique pensando no passado...");
+        Thread.sleep(2000);
+        System.out.println("O Fantasma está perto de você , o deseja fazer");
+        System.out.println("1-Fugir 2-Lutar");
+        int escolha = scanner.nextInt();
+        if (escolha == 1) {
+            fuga(velVilao,forcaVilao);
+        }else {
+            System.out.println("A luta vai começar");
+        }
     }
 }

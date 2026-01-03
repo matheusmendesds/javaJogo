@@ -4,7 +4,7 @@ import services.Menu;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
         menu.CriarMenu();
@@ -13,7 +13,7 @@ public class Main {
             System.out.println("inicio");
             CreatePerson newPerson = new  CreatePerson();
             newPerson.CreatingPerson();
-
+            newPerson.primeiraLuta();
 
         } else if (opcao == 2){
             System.out.println("configuraçoes");
