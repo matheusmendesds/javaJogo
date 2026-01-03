@@ -12,6 +12,7 @@ public class CreatePerson {
     int ptsForca;
     int ptsVel;
     int ptsRes;
+    int vida;
     public void CreatingPerson() {
         Person newPerson = new Person();
         Scanner scanner = new Scanner(System.in);
@@ -60,7 +61,7 @@ public class CreatePerson {
         } else {
             res = ptsRes + res;
         }
-        int vida = (forca + vel + res)/3;
+        vida = (forca + vel + res)/3;
         newPerson.setLife(vida);
         System.out.println("Sua forca é "+ forca);
         System.out.println("Sua velocidade é "+ vel);
@@ -79,22 +80,63 @@ public class CreatePerson {
             System.out.println("Você tentou fugir mas não foi rapido o suficiente , tente novamente");
         }
     }
+    public void pausa() throws InterruptedException {
+        Thread.sleep(2000);
+    }
+    public void luta(String nomeVilao,int forcaVilao,int velVilao,int resVilao,int vidaVilao) throws InterruptedException {
+        System.out.println("Lutando contra o "+ nomeVilao);
+        pausa();
+        int golpe = (forca + vel)/2;
+        int defesa = (res + vel)/2;
+
+        int defesaVil = (resVilao + velVilao)/2;
+        int golpeVil = (forcaVilao + velVilao)/2;
+
+        while (vidaVilao > 0 || vida > 0) {
+            Scanner scannerLuta = new Scanner(System.in);
+            System.out.println("1-Golpear 2-Esquivar");
+            int acao = scannerLuta.nextInt();
+            switch (acao) {
+                case 1:
+                    if(golpe > defesaVil) {
+                        System.out.println("Voce acertou o golpe");
+                        vidaVilao = vidaVilao - (golpe/2);
+                        pausa();
+                        System.out.println(nomeVilao + " esta com "+ vidaVilao +" de vida");
+                    } else if (golpe < defesaVil) {
+                        System.out.println("Você errou o golpe e levou um contra ataque");
+                        vida = vida - (golpeVil/4);
+                        pausa();
+                        System.out.println("Você ficou com "+ vida + " de vida");
+                    } else {
+                        System.out.println("Você errou o golpe mas ele tambem");
+                        System.out.println("Sua vida :" + vida);
+                        System.out.println("Vida vilao :" + vidaVilao);
+                    }
+            }
+
+
+
+        }
+    }
     public void primeiraLuta() throws InterruptedException {
         String nomeVilao = "Ghost";
         int forcaVilao = 60;
         int velVilao = 80;
         int resVilao = 65;
-        int vidaVIlao = (forcaVilao + velVilao + resVilao)/3;
+        int vidaVilao = (forcaVilao + velVilao + resVilao)/3;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Não fique pensando no passado...");
         Thread.sleep(2000);
         System.out.println("O Fantasma está perto de você , o deseja fazer");
         System.out.println("1-Fugir 2-Lutar");
         int escolha = scanner.nextInt();
+
         if (escolha == 1) {
             fuga(velVilao,forcaVilao);
         }else {
             System.out.println("A luta vai começar");
+            luta(nomeVilao,forcaVilao,velVilao,resVilao,vidaVilao);
         }
     }
 }

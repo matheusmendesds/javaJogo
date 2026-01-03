@@ -14,7 +14,6 @@ public class Main {
             CreatePerson newPerson = new  CreatePerson();
             newPerson.CreatingPerson();
             newPerson.primeiraLuta();
-
         } else if (opcao == 2){
             System.out.println("configuraçoes");
         } else if (opcao == 3) {
