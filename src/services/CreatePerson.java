@@ -1,7 +1,6 @@
 package services;
 
 import classes.Person;
-import java.util.Timer;
 import java.util.Scanner;
 
 public class CreatePerson {
@@ -50,7 +49,6 @@ public class CreatePerson {
         }
 
         restantes = total - ptsForca - ptsVel;
-
         System.out.println("Pontos para resistencia"+", pontos restantes " + restantes);
         ptsRes = scanner.nextInt();
         if(ptsRes > restantes) {
@@ -105,7 +103,9 @@ public class CreatePerson {
                         System.out.println(nomeVilao + " esta com "+ vidaVilao +" de vida");
                     } else if (golpe < defesaVil) {
                         System.out.println("Você errou o golpe e levou um contra ataque");
-                        vida = vida - (golpeVil/4);
+                        System.out.println("defesa" +defesa);
+                        System.out.println("golpe" + golpeVil);
+                        vida = vida -  (golpeVil/4);
                         pausa();
                         System.out.println("Você ficou com "+ vida + " de vida");
                     } else {
